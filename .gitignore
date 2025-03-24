@@ -1,0 +1,33 @@
+# === System Files ===
+.DS_Store
+Thumbs.db
+
+# === Python Virtual Environment ===
+.venv/
+
+# === Python Cache Files ===
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# === Environment Variables / Secrets ===
+.env
+
+# === Log / Temp / Build Output ===
+*.log
+*.tmp
+out/
+output/
+
+# === IntelliJ IDEA / PyCharm ===
+.idea/
+*.iml
+
+# === JetBrains Specific ===
+# Uncomment below if you use these folders
+# .idea/**/workspace.xml
+# .idea/**/tasks.xml
+
+# === VSCode (if opened there) ===
+.vscode/
