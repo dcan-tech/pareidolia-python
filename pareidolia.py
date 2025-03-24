@@ -13,7 +13,8 @@ parser.add_argument(
     type=str,
     choices=["grayscale", "rgb"],
     default="grayscale",
-    help="Color mode: grayscale or rgb (default: grayscale",
+    help="Color mode: grayscale or rgb (default: grayscale)",
+
 )
 
 args = parser.parse_args()
@@ -29,22 +30,29 @@ mode = args.mode
 # output directory exists?
 os.makedirs("output", exist_ok=True)
 
+def generate_image(width, height, seed=None, mode="grayscale"):
+    rng = random.Random(seed)
+    image = Image.new("RGB", (width, height))
 
-# create a new RGB imagae
-image = Image.new("RGB", (width, height))
+    for x in range(width):
+        for y in range(height):
+            if mode == "grayscale":
+                gray = rng.randint(0, 255)
+                color = (gray, gray, gray)
+            else:
+                r = rng.randint(0, 255)
+                g = rng.randint(0, 255)
+                b = rng.randint(0, 255)
+                color = (r, g, b)
 
-for x in range(width):
-    for y in range(height):
-        if mode == "grayscale":
-            gray = rng.randint(0, 255)
-            color = (gray, gray, gray)
-        else:  # mode == "rgb"
-            r = rng.randint(0, 255)
-            g = rng.randint(0, 255)
-            b = rng.randint(0, 255)
-            color = (r, g, b)
+            image.putpixel((x, y), color)
 
-        image.putpixel((x, y), color)
+    return image
+
+# create a new RGB image
+image = generate_image(width, height, seed, mode)
+
+
 
 # build dynamic filename
 filename = f"image-{width}x{height}"
