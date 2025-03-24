@@ -36,6 +36,26 @@ def generate_frames(width, height, seed=None, mode="grayscale", frame_count=1):
         if seed is not None:
             seed += 1
 
+def create_gif_from_frames(output_dir="output", pattern="frame-*.png", gif_name="animation.gif", duration=0.1):
+    from glob import glob
+    import os
+    import imageio.v2 as imageio
+
+    frames = []
+    paths = sorted(glob(os.path.join(output_dir, pattern)))
+
+    if not paths:
+        print("No frame images found to build GIF.")
+        return
+
+    for path in paths:
+        frames.append(imageio.imread(path))
+
+    gif_path = os.path.join(output_dir, gif_name)
+    imageio.mimsave(gif_path, frames, duration=duration)
+    print(f"Animated GIF saved as: {gif_path}")
+
+
 
 # CLI argument parser
 parser = argparse.ArgumentParser(description="Generate random static images.")
@@ -56,6 +76,12 @@ parser.add_argument(
     default=1,
     help="Number of frames to generate (default: 1)"
 )
+parser.add_argument(
+    "--animate",
+    action="store_true",
+    help="If set, combines frames into an animated GIF"
+)
+
 
 args = parser.parse_args()
 
@@ -66,9 +92,14 @@ seed = args.seed
 rng = random.Random(seed)
 mode = args.mode
 frame_count = args.frames
+animate = args.animate
 
 if frame_count > 1:
     generate_frames(width, height, seed, mode, frame_count)
+
+    if args.animate:
+        create_gif_from_frames()
+
 else:
     image = generate_image(width, height, seed, mode)
 
@@ -80,6 +111,7 @@ else:
     filepath = os.path.join("output", filename)
     image.save(filepath)
     print(f"Image saved as: {filepath}")
+
 
 
 
