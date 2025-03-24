@@ -12,7 +12,7 @@ Built as a fun coding exercise to reinforce CLI tooling, image manipulation, and
 
 ---
 
-## 🧩 Available Flags
+## Available Flags
 
 | Flag         | Type    | Description                                                                 |
 |--------------|---------|-----------------------------------------------------------------------------|
