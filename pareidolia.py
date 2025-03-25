@@ -3,6 +3,7 @@ import random
 from PIL import Image
 import argparse
 
+
 def generate_image(width, height, seed=None, mode="grayscale"):
     rng = random.Random(seed)
     image = Image.new("RGB", (width, height))
@@ -36,7 +37,10 @@ def generate_frames(width, height, seed=None, mode="grayscale", frame_count=1):
         if seed is not None:
             seed += 1
 
-def create_gif_from_frames(output_dir="output", pattern="frame-*.png", gif_name="animation.gif", duration=0.1):
+
+def create_gif_from_frames(
+        output_dir="output", pattern="frame-*.png", gif_name="animation.gif", duration=0.1
+):
     from glob import glob
     import os
     import imageio.v2 as imageio
@@ -56,7 +60,6 @@ def create_gif_from_frames(output_dir="output", pattern="frame-*.png", gif_name=
     print(f"Animated GIF saved as: {gif_path}")
 
 
-
 # CLI argument parser
 parser = argparse.ArgumentParser(description="Generate random static images.")
 parser.add_argument("--width", type=int, default=128, help="Width of image")
@@ -68,18 +71,14 @@ parser.add_argument(
     choices=["grayscale", "rgb"],
     default="grayscale",
     help="Color mode: grayscale or rgb (default: grayscale)",
-
 )
 parser.add_argument(
-    "--frames",
-    type=int,
-    default=1,
-    help="Number of frames to generate (default: 1)"
+    "--frames", type=int, default=1, help="Number of frames to generate (default: 1)"
 )
 parser.add_argument(
     "--animate",
     action="store_true",
-    help="If set, combines frames into an animated GIF"
+    help="If set, combines frames into an animated GIF",
 )
 
 
@@ -113,11 +112,5 @@ else:
     print(f"Image saved as: {filepath}")
 
 
-
-
 # output directory exists?
 os.makedirs("output", exist_ok=True)
-
-
-
-
