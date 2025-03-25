@@ -31,3 +31,4 @@ output/
 
 # === VSCode (if opened there) ===
 .vscode/
+test*.py
