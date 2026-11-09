@@ -1,9 +1,5 @@
-"""Command-line entry point for Pareidolia.
 
-Run as: python cli.py --width 128 --height 128 --mode rgb --seed 42
-(or via the pareidolia.py wrapper in the project root, for anyone used
-to the old single-file layout: python pareidolia.py ...)
-"""
+"""Command-line interface for Pareidolia."""
 
 import os
 import argparse
@@ -12,6 +8,7 @@ from core import generate_image, generate_frames, create_gif_from_frames
 
 
 def main():
+    """Parse arguments and generate images or animations."""
     parser = argparse.ArgumentParser(description="Generate random static images.")
     parser.add_argument("--width", type=int, default=128, help="Width of image")
     parser.add_argument("--height", type=int, default=128, help="Height of image")
