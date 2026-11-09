@@ -40,11 +40,11 @@ python pareidolia.py --width 128 --height 128 --mode rgb --seed 42 --frames 1 --
 - Frame batches saved as: `output/frame-000.png`, `output/frame-001.png`, etc.
 - Animated output (if `--animate` is used): `output/animation.gif`
 
-## Performance Note
+## Changelog
 
-Image generation uses NumPy (`np.random.default_rng` + array generation) instead of a per-pixel Python loop with `Image.putpixel()`. This is roughly 100–200x faster for larger images.
-
-Note: because the RNG algorithm changed (NumPy's PCG64 instead of Python's `random.Random`), a given `--seed` now produces different pixel values than the original `putpixel`-based version did. Reproducibility *within* this version is unaffected — the same seed always produces the same output here.
+- **Performance:** image generation now uses NumPy array generation instead of a per-pixel loop — roughly 100–200x faster for larger images. Note: this changed the RNG algorithm (NumPy's PCG64 instead of Python's `random.Random`), so a given `--seed` now produces different pixel values than in earlier versions. Reproducibility *within* the current version is unaffected.
+- **Added:** `--loop` flag for GIF loop count.
+- **Refactored:** split into `core.py` (generation logic) and `cli.py` (argument parsing), with `pareidolia.py` kept as a backward-compatible entry point.
 
 ## Requirements
 
