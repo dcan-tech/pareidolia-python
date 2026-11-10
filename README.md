@@ -6,7 +6,7 @@ A visual noise generator inspired by the original Pareidolia Dart library — re
 
 This command-line application generates grayscale or RGB static noise images using random pixel data. It supports reproducible output via seeding, multi-frame generation, and optional animation via `.gif` creation.
 
-Built as a fun coding exercise to reinforce CLI tooling, image manipulation, and randomization techniques in Python — with room to grow into more advanced pareidolia-style pattern exploration.
+Built as a fun coding exercise to reinforce CLI tooling, image manipulation, and randomization techniques in Python. Future development is planned to explore more advanced pareidolia-style pattern recognition.
 
 ## Project Structure
 
