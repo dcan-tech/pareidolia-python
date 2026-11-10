@@ -12,7 +12,7 @@ Built as a fun coding exercise to reinforce CLI tooling, image manipulation, and
 
 | File | Purpose |
 |---|---|
-| `core.py` | Image/frame/GIF generation logic — importable standalone |
+| `core.py` | Image, frame, and GIF generation logic that can be imported independently. |
 | `cli.py` | Command-line argument parsing, calls into `core.py` |
 | `pareidolia.py` | Backward-compatible wrapper; `python pareidolia.py ...` still works exactly as before, now via `cli.py` |
 
@@ -42,7 +42,7 @@ python pareidolia.py --width 128 --height 128 --mode rgb --seed 42 --frames 1 --
 
 ## Changelog
 
-- **Performance:** image generation now uses NumPy array generation instead of a per-pixel loop — roughly 100–200x faster for larger images. Note: this changed the RNG algorithm (NumPy's PCG64 instead of Python's `random.Random`), so a given `--seed` now produces different pixel values than in earlier versions. Reproducibility *within* the current version is unaffected.
+- **Performance:** Image generation now uses NumPy arrays instead of a per-pixel loop, providing approximately 100–200x faster processing for larger images. Note: this changed the RNG algorithm (NumPy's PCG64 instead of Python's `random.Random`), so a given `--seed` now produces different pixel values than in earlier versions. Reproducibility *within* the current version is unaffected.
 - **Added:** `--loop` flag for GIF loop count.
 - **Refactored:** split into `core.py` (generation logic) and `cli.py` (argument parsing), with `pareidolia.py` kept as a backward-compatible entry point.
 
