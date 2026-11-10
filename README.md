@@ -1,6 +1,6 @@
 # Pareidolia (Python Edition)
 
-A visual noise generator inspired by the original Pareidolia Dart library. Rewritten in Python for experimentation, exploration, and education.
+A Python visual noise generator inspired by the original Pareidolia library written in Dart. Developed for experimentation, exploration, and education.
 
 ## Overview
 
